@@ -10,9 +10,11 @@ def compute_cooccurrences(corpora, stimuluses, window_width):
         for i in range(len(text)):
             for stimulus in stimuluses:
                 if text[i] == stimulus:
-                    min_idx = max(i - window_width, 0)
-                    max_idx = min(i + window_width, len(text) - 1)
-                    words_to_search = text[min_idx:max_idx]
+                    left_min = max(i - window_width, 0)
+                    left_max = i
+                    right_min = i
+                    right_max = min(i + window_width + 1, len(text))
+                    words_to_search = text[left_min:left_max] + text[right_min:right_max]
                     for word in words_to_search:
                         cooccurrences[stimulus][word] += 1
     return cooccurrences

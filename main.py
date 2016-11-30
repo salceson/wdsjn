@@ -16,7 +16,7 @@ _BETA = 0.00002
 _GAMMA = 0.00002
 _MIN_OCCURRENCES_NUM = 10
 # Stimuluses to compute associations for:
-_STIMULUSES = ["alkohol"]
+_STIMULUSES = ["alkohol", "wódka", "butelka", "pijak"]
 # Corpora file:
 _CORPORA_FILENAME = "data/pap.txt"
 _CORPORA_ENCODING = "utf-8"

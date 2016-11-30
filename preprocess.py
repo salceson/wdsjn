@@ -19,7 +19,10 @@ def preprocess_corpora(corpora, min_occurrences_num, stimuluses):
             occurrences[word] += 1
     corpora = [[word for word in text if occurrences[word] > min_occurrences_num or word in stimuluses]
                for text in corpora]
+    to_pop = []
     for word, occurrences_num in occurrences.items():
         if occurrences_num <= min_occurrences_num:
-            occurrences.pop(word, None)
+            to_pop.append(word)
+    for word in to_pop:
+        occurrences.pop(word, None)
     return corpora, occurrences

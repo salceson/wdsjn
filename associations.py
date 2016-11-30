@@ -1,11 +1,13 @@
 # coding: utf-8
 from collections import defaultdict
 
+from utils import dd_int, dd_float
+
 __author__ = "Michał Ciołczyk"
 
 
 def compute_cooccurrences(corpora, stimuluses, window_width):
-    cooccurrences = defaultdict(lambda: defaultdict(int))
+    cooccurrences = defaultdict(dd_int)
     for text in corpora:
         for i in range(len(text)):
             for stimulus in stimuluses:
@@ -21,7 +23,7 @@ def compute_cooccurrences(corpora, stimuluses, window_width):
 
 
 def compute_associations(corpora, occurrences, cooccurrences, stimuluses, alpha, beta, gamma):
-    associations = defaultdict(lambda: defaultdict(float))
+    associations = defaultdict(dd_float)
     Q = sum([len(text) for text in corpora])
     for stimulus in stimuluses:
         for word, cooccurrences_num in cooccurrences[stimulus].items():

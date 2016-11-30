@@ -58,7 +58,7 @@ if __name__ == "__main__":
         print("Done")
     for stimulus, stimulus_associations in associations.items():
         print("Associations for %s:" % stimulus)
-        associations_sorted = sorted([(word, strength) for word, strength in stimulus_associations],
+        associations_sorted = sorted([(word, strength) for word, strength in stimulus_associations.items()],
                                      key=itemgetter(1), reverse=True)
         for word, strength in associations_sorted:
             print("\t%s %.6f" % (word, strength))

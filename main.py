@@ -6,6 +6,8 @@ from associations import compute_associations, compute_cooccurrences
 from pap import read_corpora
 from preprocess import preprocess_corpora
 
+__author__ = "Michał Ciołczyk"
+
 # Algorithm parameters:
 _WINDOW_WIDTH = 12
 _ALPHA = 0.66

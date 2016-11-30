@@ -4,6 +4,8 @@ from collections import defaultdict
 
 from flection import basic_form
 
+__author__ = "Michał Ciołczyk"
+
 _NOT_LETTERS = re.compile('[^a-ząćęłóńśżź]+')
 _SPACES = re.compile('\s+')
 

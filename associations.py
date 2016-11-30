@@ -1,6 +1,8 @@
 # coding: utf-8
 from collections import defaultdict
 
+__author__ = "Michał Ciołczyk"
+
 
 def compute_cooccurrences(corpora, stimuluses, window_width):
     cooccurrences = defaultdict(lambda: defaultdict(int))

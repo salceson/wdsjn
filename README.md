@@ -5,6 +5,7 @@ Implementacja algorytmu Rapp'a-Wettler'a obliczającego powiązania między sło
 
 ## Wymagania
 
+* Python 3
 * Biblioteka CLP
 * PLP
 

@@ -4,9 +4,9 @@ from collections import defaultdict
 
 def compute_cooccurrences(corpora, stimuluses, window_width):
     cooccurrences = defaultdict(lambda: defaultdict(int))
-    for stimulus in stimuluses:
-        for text in corpora:
-            for i in range(len(text)):
+    for text in corpora:
+        for i in range(len(text)):
+            for stimulus in stimuluses:
                 if text[i] == stimulus:
                     min_idx = max(i - window_width, 0)
                     max_idx = min(i + window_width, len(text) - 1)

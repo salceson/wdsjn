@@ -14,7 +14,7 @@ def compute_cooccurrences(corpora, stimuluses, window_width):
                 if text[i] == stimulus:
                     left_min = max(i - window_width, 0)
                     left_max = i
-                    right_min = i
+                    right_min = i + 1
                     right_max = min(i + window_width + 1, len(text))
                     words_to_search = text[left_min:left_max] + text[right_min:right_max]
                     for word in words_to_search:
@@ -24,11 +24,13 @@ def compute_cooccurrences(corpora, stimuluses, window_width):
 
 def compute_associations(corpora, occurrences, cooccurrences, stimuluses, alpha, beta, gamma):
     associations = defaultdict(dd_float)
-    Q = sum([len(text) for text in corpora])
+    words_num = sum([len(text) for text in corpora])
+    beta_q = beta * words_num
+    gamma_q = gamma * words_num
     for stimulus in stimuluses:
         for word, cooccurrences_num in cooccurrences[stimulus].items():
-            if occurrences[word] > beta * Q:
+            if occurrences[word] > beta_q:
                 associations[stimulus][word] = cooccurrences_num / (occurrences[word] ** alpha)
             else:
-                associations[stimulus][word] = cooccurrences_num / (gamma * occurrences[word])
+                associations[stimulus][word] = cooccurrences_num / gamma_q
     return associations

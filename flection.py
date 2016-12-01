@@ -48,3 +48,20 @@ def basic_form(word):
             return forms[0]
         except IndexError:
             return word
+
+
+def is_in_dictionary(word):
+    _load_flection_map()
+    rec = _plp.rec(word)
+    if rec:
+        forms = list(set(_strip_sie(_plp.bform(id)) for id in rec))
+    else:
+        forms = _basic_forms.get(word)
+    if not forms:
+        return False
+    else:
+        try:
+            a = forms[0]
+            return True if a else False
+        except IndexError:
+            return False

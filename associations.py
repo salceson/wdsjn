@@ -22,13 +22,15 @@ def compute_cooccurrences(corpora, stimuluses, window_width):
                 if text[i] == stimulus:
                     words_to_search = _compute_window(i, window_width, text)
                     for word in words_to_search:
+                        if word == stimulus:
+                            continue
                         cooccurrences[stimulus][word] += 1
     return cooccurrences
 
 
-def compute_associations(corpora, occurrences, cooccurrences, stimuluses, alpha, beta, gamma):
+def compute_associations(occurrences, cooccurrences, stimuluses, alpha, beta, gamma):
     associations = defaultdict(dd_float)
-    words_num = sum([len(text) for text in corpora])
+    words_num = len(occurrences.keys())
     beta_q = beta * words_num
     gamma_q = gamma * words_num
     for stimulus in stimuluses:

@@ -53,6 +53,7 @@ def _read_computed_associations():
 
 
 def _read_real_associations(stimuluses):
+    counter = defaultdict(dd_float)
     associations = defaultdict(dd_float)
     stimuluses_files = {stimulus: deogonkify(stimulus) for stimulus in stimuluses}
     for stimulus in stimuluses:
@@ -66,8 +67,8 @@ def _read_real_associations(stimuluses):
                 total_count += count
                 if _should_omit(word):
                     continue
-                associations[stimulus][_basic_form_of_phrase(word.lower())] += count
-        for word, count in associations[stimulus].items():
+                counter[stimulus][_basic_form_of_phrase(word.lower())] += count
+        for word, count in counter[stimulus].items():
             associations[stimulus][word] = count / total_count
     return associations
 

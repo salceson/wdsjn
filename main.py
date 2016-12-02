@@ -45,7 +45,7 @@ if __name__ == "__main__":
             f.write(pickle.dumps(cooccurrences))
         print("Done")
         print("Computing associations...")
-        associations = compute_associations(corpora, occurrences, cooccurrences, _STIMULUSES, _ALPHA, _BETA, _GAMMA)
+        associations = compute_associations(occurrences, cooccurrences, _STIMULUSES, _ALPHA, _BETA, _GAMMA)
         print("Done")
         print("Saving associations...")
         with open('data/associations.dat', 'wb') as f:

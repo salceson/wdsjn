@@ -28,6 +28,10 @@ if __name__ == "__main__":
         print("Reading corpora...")
         corpora = read_corpora(_CORPORA_FILENAME, _CORPORA_ENCODING)
         print("Done")
+        print("Saving unprocessed corpora...")
+        with open('data/corpora_unprocessed.dat', 'wb') as f:
+            f.write(pickle.dumps(corpora))
+        print("Done")
         print("Preprocessing corpora...")
         corpora, occurrences = preprocess_corpora(corpora, _MIN_OCCURRENCES_NUM, _STIMULUSES)
         print("Done")

@@ -3,6 +3,8 @@
 
 import pickle
 
+__author__ = "Michał Ciołczyk"
+
 if __name__ == "__main__":
     with open('data/corpora.dat', 'rb') as f:
         corpora = pickle.loads(f.read())
@@ -15,7 +17,7 @@ if __name__ == "__main__":
             for i, text in enumerate(corpora):
                 if word in text:
                     print(' '.join(text))
-                    print(''.join(unprocessed[i]))
+                    print(unprocessed[i])
                     print()
     except KeyboardInterrupt:
         pass
